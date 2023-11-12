@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p>insert head fragment, replace footer fragment</p>
+<div th:insert = "~{ base-fragment :: header }"></div>
+<br>
+HELLO THIS IS THYMELEAF TRAINING COURSE<br>
+<br>
+<div th:replace = "~{ base-fragment :: footer }"></div>
+<br><br>
+
+<p>insert complete fragment template</p>
+<div th:insert = "~{ base-fragment }"></div>
+<br><br>
+
+<p>insert parameterizable fragment</p>
+<div th:insert = "~{ base-fragment :: header-one ('파일', '에디트')}"></div>
+<br>
+<br>
+
+
+</body>
+</html>

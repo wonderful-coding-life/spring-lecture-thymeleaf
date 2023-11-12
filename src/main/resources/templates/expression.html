@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf Sample</title>
+</head>
+<body>
+
+<!-- Variable Expression -->
+<p th:text="${name}">username</p>
+<p th:text="${address}">address</p>
+
+<!--Today-->
+<p th:text="${today}">2022년 12월 25일</p>
+<p th:text="${#calendars.format(date,'dd MMMM yyyy')}">2022년 12월 25일</p>
+
+<!-- Selection -->
+<ul>
+    <li th:text="${member.name}">name</li>
+    <li th:text="${member.phone}">phone</li>
+    <li th:text="${member.address}">address</li>
+</ul><br>
+
+<ul th:object="${member}">
+    <li th:text="*{name}">name</li>
+    <li th:text="*{phone}">phone</li>
+    <li th:text="*{address}">address</li>
+</ul><br>
+
+<!--Set Attribute-->
+<form action="product/add" th:action="@{/product/add/{id}(id=3)}">
+    <label>제품이름<input type="text" name="name" /></label><br>
+    <label>카테고리<input type="text" name="category" /></label><br>
+    <input type="submit" value="생성" th:value="${addProductButton}"/>
+</form><br>
+
+<!-- Link -->
+<a href="product.html" th:href="@{/product/list(id=32, category='digital')}">제품 목록</a><br>
+<a href="product.html" th:href="@{/product/{category}/list(id=32, category='digital')}">제품 목록</a><br>
+
+<!-- Literal Text, Number, Boolean -->
+<p th:text=" '서울' + '인천'"></p>
+<p th:text=" 3.14 * 10 "></p>
+
+<!--Operation-->
+<p th:if="${showHelloOne} == true">안녕하세요 반갑습니다 HELLO #1</p>
+<p th:if="${showHelloTwo} == false">안녕하세요 반갑습니다 HELLO #2</p>
+<p th:if="${showHelloOne} and !${showHelloTwo}">안녕하세요 반갑습니다 HELLO #3</p>
+<p th:if="${showHelloThree} == null">안녕하세요 반갑습니다 HELLO #4</p>
+
+<!--Comparison-->
+<p th:if="${productCount} > 1000">제품 재고가 천개를 넘습니다</p>
+<p th:if="${productCount} &gt; 1000">제품 재고가 천개를 넘습니다</p>
+
+<!--Conditional-->
+<p th:text="${productCount} > 1000 ? '천개가 넘습니다.' : '천개 이하입니다.'"></p>
+
+<!--Default Value-->
+<p>블로그 제목: <span th:text="${title} ?: '제목없음'"></span></p>
+
+<!-- Literal Substitution -->
+<p th:text="|이름: ${name} 주소: ${address}|">리터럴 교체</p>
+<p th:text="'이름: ' + ${name} + ' 주소: ' + ${address}">리터럴 교체</p>
+
+<!-- Utilities #number -->
+<p th:text="${#numbers.formatDecimal(productPrice, 1, 2)}">3.14</p>
+
+<!-- Utilities #number -->
+<p th:text="${#numbers.formatInteger(productCount, 1, 'COMMA')}">32,002,324</p>
+
+<!-- Iteration -->
+<table>
+    <tr th:each="customer : ${customers}">
+        <td th:text="${customer.name}">홍길동</td>
+        <td th:text="${customer.phone}">010-1111-1111</td>
+        <td th:text="${customer.address}">서울시 강남구 대치동</td>
+    </tr>
+</table><br>
+
+<!--Iteration Status-->
+<table>
+    <tr th:each="customer, iteration : ${customers}">
+        <td th:text="${customer.name}">홍길동</td>
+        <td th:text="${customer.phone}">010-1111-1111</td>
+        <td th:text="${customer.address}">서울시 강남구 대치동</td>
+        <td th:text="|index=${iteration.index} count=${iteration.count} / ${iteration.size}|">iteration</td>
+        <td th:text="|even=${iteration.even} odd=${iteration.odd}|" th:style="${iteration.even}?'background-color: bisque;':'background-color: aqua;'">iteration</td>
+        <td th:text="|first=${iteration.first} last=${iteration.last}|">iteration</td>
+    </tr>
+</table><br>
+
+<!--switch statement-->
+<div th:switch="${role}">
+    <p th:case="'admin role'">관리자입니다</p>
+    <p th:case="user">사용자입니다</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:fragment = "header">
+    <p style="background-color: black; color: white; text-align: center; padding: 20px;">FILE EDIT VIEW NAVIGATE CODE REFACTOR</p>
+</div>
+
+<div th:fragment = "footer">
+    <p style="background-color: black; color: white; text-align: center; padding: 20px;">Copyright 1977-2023 WonderfulCodingLife</p>
+</div>
+
+<div th:fragment = "header-one (first, second)">
+    <p style="background-color: black; color: white; text-align: center; padding: 20px;">
+        <span th:text="${first}?:'FILE'">FILE</span> <span th:text="${second}?:'EDIT'">EDIT</span>
+        VIEW NAVIGATE CODE REFACTOR</p>
+</div>
+
+</body>
+</html>

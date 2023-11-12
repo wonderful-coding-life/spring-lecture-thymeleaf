@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base-flexible :: layout( ~{::title}, ~{::link}, ~{::section} )}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://css.gg/css" rel="stylesheet" />
+</head>
+<body>
+<section>
+    <div class="container">
+        <p><i class="gg-airplane"></i> 고객 목록</p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>name</th>
+                <th>phone</th>
+                <th>address</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="customer, iterator : ${customers}">
+                <td th:text="${iterator.count}">1</td>
+                <td th:text="${customer.name}">Hong</td>
+                <td th:text="${customer.phone}">010-0000-0000</td>
+                <td th:text="${customer.address}">Seoul</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>

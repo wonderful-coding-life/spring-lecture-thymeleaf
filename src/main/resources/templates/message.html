@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf Sample</title>
+</head>
+<body>
+
+<!--Message internationalization-->
+<p th:text="#{home.welcome}">Greetings</p>
+
+<!--Unescaped-->
+<p th:utext="#{home.welcome.one}">Greetings</p>
+
+<!--Text Span-->
+<p>환영합니다. <span th:text="#{customer.name}">홍길동</span> 고객님</p>
+
+<!--Message with parameters-->
+<p th:text="#{home.welcome.two(${customer.name}, ${customer.address})}">Greetings</p>
+
+<p th:text="#{${messageKey}(${customer.name}, ${customer.address})}">Greetings</p>
+</body>
+</html>
