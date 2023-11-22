@@ -14,7 +14,7 @@
     <p style="background-color: black; color: white; text-align: center; padding: 20px;">Copyright 1977-2023 WonderfulCodingLife</p>
 </div>
 
-<div th:fragment = "header-one (first, second)">
+<div th:fragment = "header-param (first, second)">
     <p style="background-color: black; color: white; text-align: center; padding: 20px;">
         <span th:text="${first}?:'FILE'">FILE</span> <span th:text="${second}?:'EDIT'">EDIT</span>
         VIEW NAVIGATE CODE REFACTOR</p>

@@ -6,23 +6,29 @@
 </head>
 <body>
 
-<p>insert head fragment, replace footer fragment</p>
+<!-- insert head fragment -->
 <div th:insert = "~{ base-fragment :: header }"></div>
+
 <br>
 HELLO THIS IS THYMELEAF TRAINING COURSE<br>
 <br>
+
+<!-- replace footer fragment -->
 <div th:replace = "~{ base-fragment :: footer }"></div>
 <br><br>
 
-<p>insert complete fragment template</p>
+<!-- insert complete fragment -->
+<!--
 <div th:insert = "~{ base-fragment }"></div>
 <br><br>
+-->
 
-<p>insert parameterizable fragment</p>
-<div th:insert = "~{ base-fragment :: header-one ('파일', '에디트')}"></div>
+<!-- insert parameterizable fragment -->
+<!--
+<div th:insert = "~{ base-fragment :: header-param ('파일', '에디트')}"></div>
 <br>
 <br>
-
+-->
 
 </body>
 </html>
