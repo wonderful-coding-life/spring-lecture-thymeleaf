@@ -28,10 +28,10 @@
 </ul><br>
 
 <!--Set Attribute-->
-<form action="product/add" th:action="@{/product/add/{id}(id=3)}">
+<form action="product/edit" th:action="@{/product/edit/{id}(id=3)}">
     <label>제품이름<input type="text" name="name" /></label><br>
     <label>카테고리<input type="text" name="category" /></label><br>
-    <input type="submit" value="생성" th:value="${addProductButton}"/>
+    <input type="submit" value="수정" th:value="${productButton}"/>
 </form><br>
 
 <!-- Link -->
@@ -62,11 +62,11 @@
 <p th:text="|이름: ${name} 주소: ${address}|">리터럴 교체</p>
 <p th:text="'이름: ' + ${name} + ' 주소: ' + ${address}">리터럴 교체</p>
 
-<!-- Utilities #number -->
-<p th:text="${#numbers.formatDecimal(productPrice, 1, 2)}">3.14</p>
+<!-- Utilities #number 최소 표시 자리수(부족한 것은 0으로 채움), 소수점 이하 자리수-->
+<p th:text="${#numbers.formatDecimal(productPrice, 20, 2)}">3.14</p>
 
-<!-- Utilities #number -->
-<p th:text="${#numbers.formatInteger(productCount, 1, 'COMMA')}">32,002,324</p>
+<!-- Utilities #number 최소 표시 자리수(부족한 것은 0으로 채움), 세자리마다 콤마 삽입-->
+<p th:text="${#numbers.formatInteger(productCount, 20, 'COMMA')}">32,002,324</p>
 
 <!-- Iteration -->
 <table>

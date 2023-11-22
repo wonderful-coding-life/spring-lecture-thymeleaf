@@ -53,7 +53,7 @@ public class HomeController {
         model.addAttribute("showHelloTwo", false);
 
         // set any attribute
-        model.addAttribute("addProductButton", "제품생성");
+        model.addAttribute("productButton", "제품수정");
 
         // for switch statements
         model.addAttribute("role", "admin role");
